@@ -21,4 +21,4 @@ RUN npm prune --production
 EXPOSE ${PORT:-3000}
 
 # Start the app
-CMD ["node", "server.mjs"]
+CMD ["node", "server.js"]
