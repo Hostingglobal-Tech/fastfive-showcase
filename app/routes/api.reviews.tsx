@@ -50,6 +50,15 @@ export const action: ActionFunction = async ({ request }) => {
     );
   } catch (error) {
     console.error('Error creating review:', error);
+    
+    // Check if it's a database connection error
+    if (error instanceof Error && error.message.includes('does not exist')) {
+      return json(
+        { error: '서비스가 준비 중입니다. 잠시 후 다시 시도해주세요.' },
+        { status: 503 }
+      );
+    }
+    
     return json(
       { error: '후기 등록 중 오류가 발생했습니다.' },
       { status: 500 }

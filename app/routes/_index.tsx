@@ -29,7 +29,18 @@ type LoaderData = {
 
 export const loader: LoaderFunction = async () => {
   const images = await getImageData();
-  const { reviews, featuredReviews } = await getApprovedReviews();
+  
+  // Handle database not ready yet
+  let reviews: Review[] = [];
+  let featuredReviews: Review[] = [];
+  
+  try {
+    const result = await getApprovedReviews();
+    reviews = result.reviews;
+    featuredReviews = result.featuredReviews;
+  } catch (error) {
+    console.log('Database not ready yet, using empty reviews');
+  }
   
   return json<LoaderData>({ 
     images, 

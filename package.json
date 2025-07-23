@@ -4,13 +4,11 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
+    "build": "prisma generate && prisma db push && remix build",
     "dev": "remix dev",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "postinstall": "prisma generate",
-    "setup": "prisma db push",
-    "migrate": "prisma migrate deploy"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0",
