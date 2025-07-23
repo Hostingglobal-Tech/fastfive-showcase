@@ -385,6 +385,20 @@
             document.documentElement.lang = lang;
         }
         
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
+            document.getElementById('langSelector').value = savedLang;
+            changeLanguage(savedLang);
+        });
+        
+        // Save language preference on change
+        const originalChangeLanguage = changeLanguage;
+        changeLanguage = function(lang) {
+            originalChangeLanguage(lang);
+            localStorage.setItem('preferredLanguage', lang);
+        };
+        
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
