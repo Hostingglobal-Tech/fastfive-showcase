@@ -1,0 +1,14 @@
+node_modules
+.cache
+.env
+.env.local
+.env.production
+
+/build
+/public/build
+
+/prisma/*.db
+/prisma/*.db-journal
+
+.DS_Store
+*.log

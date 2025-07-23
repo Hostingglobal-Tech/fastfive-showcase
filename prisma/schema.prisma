@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(100)
+  email     String?  @db.VarChar(255)
+  rating    Int      @default(5)
+  title     String?  @db.VarChar(200)
+  comment   String   @db.Text
+  
+  // Moderation fields
+  approved  Boolean  @default(false)
+  featured  Boolean  @default(false)
+  
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Optional fields for analytics
+  userAgent String?  @db.Text
+  ipHash    String?  @db.VarChar(64) // Hashed IP for spam prevention
+  
+  @@index([createdAt(sort: Desc)])
+  @@index([approved, featured])
+  @@index([rating])
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique @db.VarChar(255)
+  password  String   // Hashed password
+  name      String   @db.VarChar(100)
+  role      Role     @default(MODERATOR)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Activity tracking
+  moderatedReviews ModeratedReview[]
+}
+
+model ModeratedReview {
+  id         String   @id @default(cuid())
+  reviewId   String
+  moderatorId String
+  action     ModerationAction
+  reason     String?  @db.Text
+  
+  createdAt  DateTime @default(now())
+  
+  moderator  AdminUser @relation(fields: [moderatorId], references: [id])
+  
+  @@index([reviewId])
+  @@index([moderatorId])
+}
+
+// Enums
+enum Role {
+  ADMIN
+  MODERATOR
+}
+
+enum ModerationAction {
+  APPROVED
+  REJECTED
+  FEATURED
+  UNFEATURED
+}
