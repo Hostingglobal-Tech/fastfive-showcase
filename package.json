@@ -6,7 +6,7 @@
     "build": "remix build",
     "build:static": "node build-static.js",
     "dev": "remix dev",
-    "start": "node server.js",
+    "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
