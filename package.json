@@ -2,11 +2,10 @@
   "name": "fastfive-showcase",
   "private": true,
   "sideEffects": false,
-  "type": "module",
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "remix-serve ./build/index.js",
+    "start": "remix-serve ./build/index.js --port=${PORT:-3000}",
     "typecheck": "tsc"
   },
   "dependencies": {
