@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패스트파이브 서초3호점 - 디자인 비교</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .preview-frame {
+            height: 100vh;
+            width: 100%;
+            border: none;
+        }
+        
+        .tab-active {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .tab-inactive {
+            background-color: #f3f4f6;
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="fixed top-0 left-0 right-0 bg-white shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <h1 class="text-2xl font-bold">패스트파이브 서초3호점 디자인 비교</h1>
+                <div class="flex space-x-4">
+                    <button onclick="showDesign('minimal')" id="btn-minimal" class="px-6 py-2 font-medium tab-active transition-colors">
+                        모던 미니멀
+                    </button>
+                    <button onclick="showDesign('swiss')" id="btn-swiss" class="px-6 py-2 font-medium tab-inactive transition-colors">
+                        스위스 그리드
+                    </button>
+                    <button onclick="showSplit()" id="btn-split" class="px-6 py-2 font-medium tab-inactive transition-colors">
+                        분할 비교
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pt-16">
+        <!-- Single View -->
+        <div id="single-view" class="h-screen">
+            <iframe id="minimal-frame" src="index.html" class="preview-frame"></iframe>
+            <iframe id="swiss-frame" src="index-swiss.html" class="preview-frame hidden"></iframe>
+        </div>
+        
+        <!-- Split View -->
+        <div id="split-view" class="hidden h-screen flex">
+            <div class="w-1/2 border-r-2 border-gray-300">
+                <div class="bg-gray-800 text-white text-center py-2 text-sm font-medium">
+                    모던 미니멀
+                </div>
+                <iframe src="index.html" class="preview-frame"></iframe>
+            </div>
+            <div class="w-1/2">
+                <div class="bg-red-600 text-white text-center py-2 text-sm font-medium">
+                    스위스 그리드
+                </div>
+                <iframe src="index-swiss.html" class="preview-frame"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showDesign(design) {
+            // Hide split view
+            document.getElementById('split-view').classList.add('hidden');
+            document.getElementById('single-view').classList.remove('hidden');
+            
+            // Update button states
+            document.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+            
+            if (design === 'minimal') {
+                document.getElementById('btn-minimal').classList.add('tab-active');
+                document.getElementById('btn-minimal').classList.remove('tab-inactive');
+                document.getElementById('minimal-frame').classList.remove('hidden');
+                document.getElementById('swiss-frame').classList.add('hidden');
+            } else {
+                document.getElementById('btn-swiss').classList.add('tab-active');
+                document.getElementById('btn-swiss').classList.remove('tab-inactive');
+                document.getElementById('swiss-frame').classList.remove('hidden');
+                document.getElementById('minimal-frame').classList.add('hidden');
+            }
+        }
+        
+        function showSplit() {
+            // Show split view
+            document.getElementById('single-view').classList.add('hidden');
+            document.getElementById('split-view').classList.remove('hidden');
+            
+            // Update button states
+            document.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+            document.getElementById('btn-split').classList.add('tab-active');
+            document.getElementById('btn-split').classList.remove('tab-inactive');
+        }
+    </script>
+</body>
+</html>
