@@ -6,7 +6,7 @@
     "build": "remix build",
     "build:static": "node build-static.js",
     "dev": "remix dev",
-    "start": "remix-serve ./build/index.js --port=${PORT:-3000}",
+    "start": "node server.mjs",
     "typecheck": "tsc"
   },
   "dependencies": {

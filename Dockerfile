@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci --only=production
 
 # Copy all files
 COPY . .
@@ -14,8 +14,8 @@ COPY . .
 # Build the app
 RUN npm run build
 
-# Expose port
-EXPOSE 3000
+# Expose port (Railway will set this)
+EXPOSE ${PORT:-3000}
 
 # Start the app
-CMD ["npm", "run", "start"]
+CMD ["node", "server.mjs"]
