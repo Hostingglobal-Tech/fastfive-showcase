@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패스트파이브 서초3호점 - 프리미엄 공유오피스 | FastFive Seocho 3</title>
+    <meta name="description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스 패스트파이브 서초3호점">
+    <meta property="og:title" content="패스트파이브 서초3호점 - 프리미엄 공유오피스">
+    <meta property="og:description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .hide { display: none; }
+        
+        /* Smooth transitions */
+        * {
+            transition: all 0.3s ease;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Minimal button style */
+        .btn-minimal {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-minimal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-minimal:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Scroll indicator */
+        @keyframes scroll {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .scroll-indicator {
+            animation: scroll 2s infinite;
+        }
+        
+        /* Loading animation */
+        .loading-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #333;
+            animation: loading 1.4s infinite ease-in-out both;
+        }
+        
+        @keyframes loading {
+            0%, 80%, 100% { 
+                transform: scale(0);
+            } 40% { 
+                transform: scale(1.0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <div id="root">
+        <!-- Language Bar -->
+        <div class="fixed top-0 right-0 z-50 p-4">
+            <select id="langSelector" class="bg-white/90 backdrop-blur text-gray-900 px-3 py-1 rounded-full text-sm border border-gray-200 font-light" onchange="changeLanguage(this.value)">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <!-- Header -->
+        <header class="fixed w-full top-0 z-40 bg-white/90 backdrop-blur">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="flex justify-between items-center h-20">
+                    <h1 class="text-2xl font-thin tracking-widest">
+                        <span data-lang="ko" class="lang-content">패스트파이브 서초3호점</span>
+                        <span data-lang="en" class="lang-content hide">FASTFIVE SEOCHO 3</span>
+                        <span data-lang="ja" class="lang-content hide">ファストファイブ 瑞草3号店</span>
+                        <span data-lang="zh" class="lang-content hide">FASTFIVE 瑞草3号店</span>
+                        <span data-lang="es" class="lang-content hide">FASTFIVE SEOCHO 3</span>
+                    </h1>
+                    <nav class="hidden md:flex space-x-12">
+                        <a href="#about" class="text-sm font-light hover:text-gray-600">
+                            <span data-lang="ko" class="lang-content">소개</span>
+                            <span data-lang="en" class="lang-content hide">About</span>
+                            <span data-lang="ja" class="lang-content hide">紹介</span>
+                            <span data-lang="zh" class="lang-content hide">介绍</span>
+                            <span data-lang="es" class="lang-content hide">Acerca</span>
+                        </a>
+                        <a href="#gallery" class="text-sm font-light hover:text-gray-600">
+                            <span data-lang="ko" class="lang-content">공간</span>
+                            <span data-lang="en" class="lang-content hide">Space</span>
+                            <span data-lang="ja" class="lang-content hide">空間</span>
+                            <span data-lang="zh" class="lang-content hide">空间</span>
+                            <span data-lang="es" class="lang-content hide">Espacio</span>
+                        </a>
+                        <a href="#location" class="text-sm font-light hover:text-gray-600">
+                            <span data-lang="ko" class="lang-content">위치</span>
+                            <span data-lang="en" class="lang-content hide">Location</span>
+                            <span data-lang="ja" class="lang-content hide">場所</span>
+                            <span data-lang="zh" class="lang-content hide">位置</span>
+                            <span data-lang="es" class="lang-content hide">Ubicación</span>
+                        </a>
+                        <a href="#contact" class="text-sm font-light hover:text-gray-600">
+                            <span data-lang="ko" class="lang-content">문의</span>
+                            <span data-lang="en" class="lang-content hide">Contact</span>
+                            <span data-lang="ja" class="lang-content hide">お問い合わせ</span>
+                            <span data-lang="zh" class="lang-content hide">联系</span>
+                            <span data-lang="es" class="lang-content hide">Contacto</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center relative">
+            <div class="container mx-auto px-6 lg:px-12 text-center">
+                <h2 class="text-6xl md:text-8xl font-thin mb-8 fade-in-up">
+                    <span data-lang="ko" class="lang-content">프리미엄<br>공유오피스</span>
+                    <span data-lang="en" class="lang-content hide">Premium<br>Coworking</span>
+                    <span data-lang="ja" class="lang-content hide">プレミアム<br>共有オフィス</span>
+                    <span data-lang="zh" class="lang-content hide">高端<br>共享办公</span>
+                    <span data-lang="es" class="lang-content hide">Coworking<br>Premium</span>
+                </h2>
+                <p class="text-xl font-light text-gray-600 mb-4">
+                    <span data-lang="ko" class="lang-content">패스트파이브 서초3호점</span>
+                    <span data-lang="en" class="lang-content hide">FastFive Seocho 3</span>
+                    <span data-lang="ja" class="lang-content hide">ファストファイブ 瑞草3号店</span>
+                    <span data-lang="zh" class="lang-content hide">FastFive 瑞草3号店</span>
+                    <span data-lang="es" class="lang-content hide">FastFive Seocho 3</span>
+                </p>
+                <p class="text-lg font-light text-gray-500">
+                    <span data-lang="ko" class="lang-content">남부터미널역 도보 10분</span>
+                    <span data-lang="en" class="lang-content hide">10 min walk from Nambu Terminal</span>
+                    <span data-lang="ja" class="lang-content hide">南部ターミナル駅から徒歩10分</span>
+                    <span data-lang="zh" class="lang-content hide">距南部客运站步行10分钟</span>
+                    <span data-lang="es" class="lang-content hide">10 min a pie de Nambu Terminal</span>
+                </p>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 bg-gray-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h3 class="text-4xl font-thin mb-8">
+                        <span data-lang="ko" class="lang-content">미니멀한 공간, 최대의 효율</span>
+                        <span data-lang="en" class="lang-content hide">Minimal Space, Maximum Efficiency</span>
+                        <span data-lang="ja" class="lang-content hide">ミニマルな空間、最大の効率</span>
+                        <span data-lang="zh" class="lang-content hide">极简空间，最大效率</span>
+                        <span data-lang="es" class="lang-content hide">Espacio Minimal, Máxima Eficiencia</span>
+                    </h3>
+                    <p class="text-lg font-light text-gray-600 leading-relaxed">
+                        <span data-lang="ko" class="lang-content">2023년 완공된 신축 건물에 위치한 패스트파이브 서초3호점은 미니멀한 디자인과 최첨단 시설을 갖춘 프리미엄 공유오피스입니다. 업무에만 집중할 수 있는 조용하고 쾌적한 환경을 제공합니다.</span>
+                        <span data-lang="en" class="lang-content hide">Located in a newly built building completed in 2023, FastFive Seocho 3 is a premium coworking space with minimal design and state-of-the-art facilities. We provide a quiet and comfortable environment where you can focus solely on your work.</span>
+                        <span data-lang="ja" class="lang-content hide">2023年完工の新築ビルに位置するファストファイブ瑞草3号店は、ミニマルなデザインと最先端の設備を備えたプレミアム共有オフィスです。仕事に集中できる静かで快適な環境を提供します。</span>
+                        <span data-lang="zh" class="lang-content hide">位于2023年竣工的新建筑中的FastFive瑞草3号店是一个拥有极简设计和最先进设施的高端共享办公空间。我们提供安静舒适的环境，让您专注于工作。</span>
+                        <span data-lang="es" class="lang-content hide">Ubicado en un edificio nuevo completado en 2023, FastFive Seocho 3 es un espacio de coworking premium con diseño minimalista e instalaciones de última generación. Proporcionamos un ambiente tranquilo y cómodo donde puedes concentrarte en tu trabajo.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-32">
+            <div class="container mx-auto px-6 lg:px-12">
+                <h3 class="text-4xl font-thin text-center mb-20">
+                    <span data-lang="ko" class="lang-content">공간</span>
+                    <span data-lang="en" class="lang-content hide">Space</span>
+                    <span data-lang="ja" class="lang-content hide">空間</span>
+                    <span data-lang="zh" class="lang-content hide">空间</span>
+                    <span data-lang="es" class="lang-content hide">Espacio</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <!-- 11층 라운지 -->
+                    <div class="group hover-lift">
+                        <div class="overflow-hidden mb-6">
+                            <img src="images/11층라운지_신축이라_깨끗하고_인테리어가_깔끔하다.jpg" alt="11층 라운지" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h4 class="text-2xl font-light mb-3">
+                            <span data-lang="ko" class="lang-content">11층 라운지</span>
+                            <span data-lang="en" class="lang-content hide">11F Lounge</span>
+                            <span data-lang="ja" class="lang-content hide">11階ラウンジ</span>
+                            <span data-lang="zh" class="lang-content hide">11楼休息室</span>
+                            <span data-lang="es" class="lang-content hide">Salón Piso 11</span>
+                        </h4>
+                        <p class="text-gray-600 font-light leading-relaxed">
+                            <span data-lang="ko" class="lang-content">최상층에 위치한 프리미엄 라운지는 파노라마 뷰와 함께 편안한 네트워킹 공간을 제공합니다.</span>
+                            <span data-lang="en" class="lang-content hide">The premium lounge on the top floor offers a comfortable networking space with panoramic views.</span>
+                            <span data-lang="ja" class="lang-content hide">最上階のプレミアムラウンジは、パノラマビューと快適なネットワーキングスペースを提供します。</span>
+                            <span data-lang="zh" class="lang-content hide">顶层的高级休息室提供全景视野和舒适的社交空间。</span>
+                            <span data-lang="es" class="lang-content hide">El salón premium en el último piso ofrece un espacio de networking cómodo con vistas panorámicas.</span>
+                        </p>
+                    </div>
+
+                    <!-- 개인 업무공간 -->
+                    <div class="group hover-lift">
+                        <div class="overflow-hidden mb-6">
+                            <img src="images/배정받은자리_넓고_쾌적하였다.jpg" alt="개인 업무공간" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h4 class="text-2xl font-light mb-3">
+                            <span data-lang="ko" class="lang-content">전용 데스크</span>
+                            <span data-lang="en" class="lang-content hide">Dedicated Desk</span>
+                            <span data-lang="ja" class="lang-content hide">専用デスク</span>
+                            <span data-lang="zh" class="lang-content hide">专用办公桌</span>
+                            <span data-lang="es" class="lang-content hide">Escritorio Dedicado</span>
+                        </h4>
+                        <p class="text-gray-600 font-light leading-relaxed">
+                            <span data-lang="ko" class="lang-content">인체공학적 의자와 높이 조절 데스크로 구성된 개인 전용 업무 공간입니다.</span>
+                            <span data-lang="en" class="lang-content hide">Private workspace with ergonomic chair and height-adjustable desk.</span>
+                            <span data-lang="ja" class="lang-content hide">人間工学に基づいた椅子と高さ調節可能なデスクを備えた専用ワークスペース。</span>
+                            <span data-lang="zh" class="lang-content hide">配备人体工学椅和可调节高度办公桌的私人工作空间。</span>
+                            <span data-lang="es" class="lang-content hide">Espacio de trabajo privado con silla ergonómica y escritorio ajustable.</span>
+                        </p>
+                    </div>
+
+                    <!-- 사무 집기 -->
+                    <div class="group hover-lift">
+                        <div class="overflow-hidden mb-6">
+                            <img src="images/각층마다_이러한_집기류가_구비되어_있었다.jpg" alt="사무 집기" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h4 class="text-2xl font-light mb-3">
+                            <span data-lang="ko" class="lang-content">사무 설비</span>
+                            <span data-lang="en" class="lang-content hide">Office Equipment</span>
+                            <span data-lang="ja" class="lang-content hide">オフィス設備</span>
+                            <span data-lang="zh" class="lang-content hide">办公设备</span>
+                            <span data-lang="es" class="lang-content hide">Equipamiento</span>
+                        </h4>
+                        <p class="text-gray-600 font-light leading-relaxed">
+                            <span data-lang="ko" class="lang-content">각 층마다 최신 사무 기기를 완비하여 24시간 이용 가능합니다.</span>
+                            <span data-lang="en" class="lang-content hide">Latest office equipment available 24/7 on each floor.</span>
+                            <span data-lang="ja" class="lang-content hide">各階に最新のオフィス機器を完備し、24時間利用可能です。</span>
+                            <span data-lang="zh" class="lang-content hide">每层配备最新办公设备，24小时可用。</span>
+                            <span data-lang="es" class="lang-content hide">Equipos de oficina de última generación disponibles 24/7 en cada piso.</span>
+                        </p>
+                    </div>
+
+                    <!-- 주방 시설 -->
+                    <div class="group hover-lift">
+                        <div class="overflow-hidden mb-6">
+                            <img src="images/싱크대와_제빙기_전자렌지도_있었다.jpg" alt="주방 시설" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h4 class="text-2xl font-light mb-3">
+                            <span data-lang="ko" class="lang-content">주방 시설</span>
+                            <span data-lang="en" class="lang-content hide">Kitchen Facilities</span>
+                            <span data-lang="ja" class="lang-content hide">キッチン設備</span>
+                            <span data-lang="zh" class="lang-content hide">厨房设施</span>
+                            <span data-lang="es" class="lang-content hide">Cocina</span>
+                        </h4>
+                        <p class="text-gray-600 font-light leading-relaxed">
+                            <span data-lang="ko" class="lang-content">완벽한 주방 시설로 간단한 식사 준비부터 팀 회식까지 가능합니다.</span>
+                            <span data-lang="en" class="lang-content hide">Complete kitchen facilities for everything from simple meals to team gatherings.</span>
+                            <span data-lang="ja" class="lang-content hide">簡単な食事の準備からチーム会食まで可能な完璧なキッチン設備。</span>
+                            <span data-lang="zh" class="lang-content hide">完善的厨房设施，从简单的餐食准备到团队聚餐都可以。</span>
+                            <span data-lang="es" class="lang-content hide">Instalaciones de cocina completas para desde comidas simples hasta reuniones de equipo.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-32 bg-gray-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-5xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-5xl font-thin mb-4">24/7</div>
+                        <h4 class="text-xl font-light mb-2">
+                            <span data-lang="ko" class="lang-content">연중무휴</span>
+                            <span data-lang="en" class="lang-content hide">Always Open</span>
+                            <span data-lang="ja" class="lang-content hide">年中無休</span>
+                            <span data-lang="zh" class="lang-content hide">全年无休</span>
+                            <span data-lang="es" class="lang-content hide">Siempre Abierto</span>
+                        </h4>
+                        <p class="text-gray-600 font-light">
+                            <span data-lang="ko" class="lang-content">언제든 이용 가능</span>
+                            <span data-lang="en" class="lang-content hide">Available anytime</span>
+                            <span data-lang="ja" class="lang-content hide">いつでも利用可能</span>
+                            <span data-lang="zh" class="lang-content hide">随时可用</span>
+                            <span data-lang="es" class="lang-content hide">Disponible siempre</span>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-thin mb-4">10</div>
+                        <h4 class="text-xl font-light mb-2">
+                            <span data-lang="ko" class="lang-content">도보 10분</span>
+                            <span data-lang="en" class="lang-content hide">Minutes Walk</span>
+                            <span data-lang="ja" class="lang-content hide">徒歩10分</span>
+                            <span data-lang="zh" class="lang-content hide">步行分钟</span>
+                            <span data-lang="es" class="lang-content hide">Minutos a Pie</span>
+                        </h4>
+                        <p class="text-gray-600 font-light">
+                            <span data-lang="ko" class="lang-content">남부터미널역에서</span>
+                            <span data-lang="en" class="lang-content hide">From Nambu Terminal</span>
+                            <span data-lang="ja" class="lang-content hide">南部ターミナル駅から</span>
+                            <span data-lang="zh" class="lang-content hide">从南部客运站</span>
+                            <span data-lang="es" class="lang-content hide">Desde Nambu Terminal</span>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-thin mb-4">11F</div>
+                        <h4 class="text-xl font-light mb-2">
+                            <span data-lang="ko" class="lang-content">최상층 라운지</span>
+                            <span data-lang="en" class="lang-content hide">Top Floor</span>
+                            <span data-lang="ja" class="lang-content hide">最上階</span>
+                            <span data-lang="zh" class="lang-content hide">顶层</span>
+                            <span data-lang="es" class="lang-content hide">Último Piso</span>
+                        </h4>
+                        <p class="text-gray-600 font-light">
+                            <span data-lang="ko" class="lang-content">파노라마 뷰</span>
+                            <span data-lang="en" class="lang-content hide">Panoramic View</span>
+                            <span data-lang="ja" class="lang-content hide">パノラマビュー</span>
+                            <span data-lang="zh" class="lang-content hide">全景视野</span>
+                            <span data-lang="es" class="lang-content hide">Vista Panorámica</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="py-32">
+            <div class="container mx-auto px-6 lg:px-12">
+                <h3 class="text-4xl font-thin text-center mb-20">
+                    <span data-lang="ko" class="lang-content">위치</span>
+                    <span data-lang="en" class="lang-content hide">Location</span>
+                    <span data-lang="ja" class="lang-content hide">場所</span>
+                    <span data-lang="zh" class="lang-content hide">位置</span>
+                    <span data-lang="es" class="lang-content hide">Ubicación</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+                    <div>
+                        <h4 class="text-2xl font-light mb-8">
+                            <span data-lang="ko" class="lang-content">오시는 길</span>
+                            <span data-lang="en" class="lang-content hide">Directions</span>
+                            <span data-lang="ja" class="lang-content hide">アクセス</span>
+                            <span data-lang="zh" class="lang-content hide">交通指南</span>
+                            <span data-lang="es" class="lang-content hide">Cómo Llegar</span>
+                        </h4>
+                        <div class="space-y-4 text-gray-600 font-light">
+                            <p>
+                                <span data-lang="ko" class="lang-content">서울특별시 서초구 효령로 335</span>
+                                <span data-lang="en" class="lang-content hide">335 Hyoryeong-ro, Seocho-gu, Seoul</span>
+                                <span data-lang="ja" class="lang-content hide">ソウル特別市瑞草区孝令路335</span>
+                                <span data-lang="zh" class="lang-content hide">首尔特别市瑞草区孝令路335</span>
+                                <span data-lang="es" class="lang-content hide">335 Hyoryeong-ro, Seocho-gu, Seúl</span>
+                            </p>
+                            <p>
+                                <span data-lang="ko" class="lang-content">지하철 3호선 남부터미널역 6번 출구 도보 10분</span>
+                                <span data-lang="en" class="lang-content hide">10-min walk from Exit 6, Nambu Terminal Station (Line 3)</span>
+                                <span data-lang="ja" class="lang-content hide">地下鉄3号線南部ターミナル駅6番出口から徒歩10分</span>
+                                <span data-lang="zh" class="lang-content hide">地铁3号线南部客运站6号出口步行10分钟</span>
+                                <span data-lang="es" class="lang-content hide">10 min a pie desde la Salida 6, Estación Nambu Terminal (Línea 3)</span>
+                            </p>
+                            <p>
+                                <span data-lang="ko" class="lang-content">주차 공간 완비 (사전 등록 필요)</span>
+                                <span data-lang="en" class="lang-content hide">Parking available (pre-registration required)</span>
+                                <span data-lang="ja" class="lang-content hide">駐車場完備（事前登録必要）</span>
+                                <span data-lang="zh" class="lang-content hide">配备停车场（需要提前注册）</span>
+                                <span data-lang="es" class="lang-content hide">Estacionamiento disponible (registro previo requerido)</span>
+                            </p>
+                        </div>
+                        
+                        <h4 class="text-2xl font-light mt-12 mb-8">
+                            <span data-lang="ko" class="lang-content">운영 시간</span>
+                            <span data-lang="en" class="lang-content hide">Hours</span>
+                            <span data-lang="ja" class="lang-content hide">営業時間</span>
+                            <span data-lang="zh" class="lang-content hide">营业时间</span>
+                            <span data-lang="es" class="lang-content hide">Horario</span>
+                        </h4>
+                        <div class="space-y-2 text-gray-600 font-light">
+                            <p>
+                                <span data-lang="ko" class="lang-content">평일: 08:00 - 22:00</span>
+                                <span data-lang="en" class="lang-content hide">Weekdays: 08:00 - 22:00</span>
+                                <span data-lang="ja" class="lang-content hide">平日: 08:00 - 22:00</span>
+                                <span data-lang="zh" class="lang-content hide">工作日: 08:00 - 22:00</span>
+                                <span data-lang="es" class="lang-content hide">Días laborables: 08:00 - 22:00</span>
+                            </p>
+                            <p>
+                                <span data-lang="ko" class="lang-content">주말: 09:00 - 18:00</span>
+                                <span data-lang="en" class="lang-content hide">Weekends: 09:00 - 18:00</span>
+                                <span data-lang="ja" class="lang-content hide">週末: 09:00 - 18:00</span>
+                                <span data-lang="zh" class="lang-content hide">周末: 09:00 - 18:00</span>
+                                <span data-lang="es" class="lang-content hide">Fines de semana: 09:00 - 18:00</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg overflow-hidden">
+                        <img src="images/map-placeholder.svg" alt="패스트파이브 서초3호점 지도" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 bg-gray-50">
+            <div class="container mx-auto px-6 lg:px-12 text-center">
+                <h3 class="text-4xl font-thin mb-12">
+                    <span data-lang="ko" class="lang-content">문의하기</span>
+                    <span data-lang="en" class="lang-content hide">Contact Us</span>
+                    <span data-lang="ja" class="lang-content hide">お問い合わせ</span>
+                    <span data-lang="zh" class="lang-content hide">联系我们</span>
+                    <span data-lang="es" class="lang-content hide">Contáctanos</span>
+                </h3>
+                <p class="text-xl font-light text-gray-600 mb-8">
+                    <span data-lang="ko" class="lang-content">최고의 업무 환경을 경험해보세요</span>
+                    <span data-lang="en" class="lang-content hide">Experience the best working environment</span>
+                    <span data-lang="ja" class="lang-content hide">最高の業務環境を体験してください</span>
+                    <span data-lang="zh" class="lang-content hide">体验最佳办公环境</span>
+                    <span data-lang="es" class="lang-content hide">Experimenta el mejor ambiente de trabajo</span>
+                </p>
+                <button class="btn-minimal bg-gray-900 text-white px-12 py-4 rounded-full font-light hover:bg-gray-800">
+                    <span data-lang="ko" class="lang-content">상담 예약하기</span>
+                    <span data-lang="en" class="lang-content hide">Book a Tour</span>
+                    <span data-lang="ja" class="lang-content hide">見学を予約</span>
+                    <span data-lang="zh" class="lang-content hide">预约参观</span>
+                    <span data-lang="es" class="lang-content hide">Reservar Visita</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-gray-200">
+            <div class="container mx-auto px-6 lg:px-12 text-center">
+                <p class="text-sm font-light text-gray-500">© 2024 FastFive Seocho 3. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function changeLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('hide');
+            });
+            
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('hide');
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
+            document.getElementById('langSelector').value = savedLang;
+            changeLanguage(savedLang);
+        });
+        
+        // Save language preference on change
+        const originalChangeLanguage = changeLanguage;
+        changeLanguage = function(lang) {
+            originalChangeLanguage(lang);
+            localStorage.setItem('preferredLanguage', lang);
+        };
+        
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

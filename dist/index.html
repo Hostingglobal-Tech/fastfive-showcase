@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패스트파이브 서초3호점 - 프리미엄 공유오피스 | FastFive Seocho 3</title>
+    <meta name="description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스 패스트파이브 서초3호점">
+    <meta property="og:title" content="패스트파이브 서초3호점 - 프리미엄 공유오피스">
+    <meta property="og:description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hide { display: none; }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Card hover effects */
+        .design-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .design-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Modern Minimal Preview */
+        .minimal-preview {
+            background: #ffffff;
+            color: #111827;
+        }
+        
+        /* Swiss Grid Preview */
+        .swiss-preview {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 0;
+        }
+        
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .loading {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Language Selector -->
+    <div class="fixed top-4 right-4 z-50">
+        <select id="langSelector" class="bg-white px-4 py-2 rounded-lg shadow-md text-sm font-medium" onchange="changeLanguage(this.value)">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+    <!-- Main Container -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-6xl w-full fade-in">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-5xl md:text-6xl font-thin mb-4">
+                    <span data-lang="ko" class="lang-content">패스트파이브 서초3호점</span>
+                    <span data-lang="en" class="lang-content hide">FastFive Seocho 3</span>
+                    <span data-lang="ja" class="lang-content hide">ファストファイブ 瑞草3号店</span>
+                    <span data-lang="zh" class="lang-content hide">FastFive 瑞草3号店</span>
+                    <span data-lang="es" class="lang-content hide">FastFive Seocho 3</span>
+                </h1>
+                <p class="text-xl text-gray-600">
+                    <span data-lang="ko" class="lang-content">디자인을 선택해주세요</span>
+                    <span data-lang="en" class="lang-content hide">Choose Your Design</span>
+                    <span data-lang="ja" class="lang-content hide">デザインを選択してください</span>
+                    <span data-lang="zh" class="lang-content hide">选择您的设计</span>
+                    <span data-lang="es" class="lang-content hide">Elige Tu Diseño</span>
+                </p>
+            </div>
+
+            <!-- Design Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Modern Minimal Card -->
+                <div class="design-card" onclick="selectDesign('minimal')">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Preview -->
+                        <div class="minimal-preview h-64 p-8 flex flex-col justify-center">
+                            <h2 class="text-3xl font-thin mb-2">프리미엄<br>공유오피스</h2>
+                            <p class="text-gray-500 font-light">미니멀한 공간, 최대의 효율</p>
+                            <div class="mt-8 space-y-2">
+                                <div class="h-8 bg-gray-100 rounded w-3/4"></div>
+                                <div class="h-8 bg-gray-100 rounded w-1/2"></div>
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <div class="p-6 border-t">
+                            <h3 class="text-2xl font-medium mb-2">
+                                <span data-lang="ko" class="lang-content">모던 미니멀</span>
+                                <span data-lang="en" class="lang-content hide">Modern Minimal</span>
+                                <span data-lang="ja" class="lang-content hide">モダンミニマル</span>
+                                <span data-lang="zh" class="lang-content hide">现代简约</span>
+                                <span data-lang="es" class="lang-content hide">Minimalista Moderno</span>
+                            </h3>
+                            <p class="text-gray-600">
+                                <span data-lang="ko" class="lang-content">깔끔하고 세련된 디자인으로 집중력을 높이는 공간</span>
+                                <span data-lang="en" class="lang-content hide">Clean and sophisticated design for enhanced focus</span>
+                                <span data-lang="ja" class="lang-content hide">クリーンで洗練されたデザインで集中力を高める空間</span>
+                                <span data-lang="zh" class="lang-content hide">简洁精致的设计提升专注力</span>
+                                <span data-lang="es" class="lang-content hide">Diseño limpio y sofisticado para mayor concentración</span>
+                            </p>
+                            <div class="mt-4 flex items-center text-sm text-gray-500">
+                                <span class="mr-4">• Thin Typography</span>
+                                <span class="mr-4">• White Space</span>
+                                <span>• Smooth Animations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swiss Grid Card -->
+                <div class="design-card" onclick="selectDesign('swiss')">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Preview -->
+                        <div class="swiss-preview h-64 relative overflow-hidden">
+                            <div class="swiss-grid h-full">
+                                <div class="col-span-8 bg-black p-8 flex items-center">
+                                    <h2 class="text-3xl font-black text-white">PREMIUM<br>WORKSPACE</h2>
+                                </div>
+                                <div class="col-span-4 bg-red-600"></div>
+                                <div class="col-span-6 bg-yellow-400 absolute bottom-0 h-16"></div>
+                                <div class="col-span-6 bg-gray-900 absolute bottom-0 right-0 h-16"></div>
+                            </div>
+                        </div>
+                        <!-- Info -->
+                        <div class="p-6 border-t">
+                            <h3 class="text-2xl font-medium mb-2">
+                                <span data-lang="ko" class="lang-content">스위스 그리드</span>
+                                <span data-lang="en" class="lang-content hide">Swiss Grid</span>
+                                <span data-lang="ja" class="lang-content hide">スイスグリッド</span>
+                                <span data-lang="zh" class="lang-content hide">瑞士网格</span>
+                                <span data-lang="es" class="lang-content hide">Rejilla Suiza</span>
+                            </h3>
+                            <p class="text-gray-600">
+                                <span data-lang="ko" class="lang-content">체계적인 그리드와 강렬한 색상의 임팩트 있는 디자인</span>
+                                <span data-lang="en" class="lang-content hide">Impactful design with systematic grid and bold colors</span>
+                                <span data-lang="ja" class="lang-content hide">体系的なグリッドと強烈な色彩のインパクトあるデザイン</span>
+                                <span data-lang="zh" class="lang-content hide">系统化网格和大胆色彩的冲击性设计</span>
+                                <span data-lang="es" class="lang-content hide">Diseño impactante con rejilla sistemática y colores audaces</span>
+                            </p>
+                            <div class="mt-4 flex items-center text-sm text-gray-500">
+                                <span class="mr-4">• Bold Typography</span>
+                                <span class="mr-4">• Grid System</span>
+                                <span>• Strong Colors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Link -->
+            <div class="text-center mt-12">
+                <a href="compare-designs.html" class="text-gray-600 hover:text-gray-900 underline">
+                    <span data-lang="ko" class="lang-content">두 디자인 비교하기</span>
+                    <span data-lang="en" class="lang-content hide">Compare Both Designs</span>
+                    <span data-lang="ja" class="lang-content hide">両デザインを比較</span>
+                    <span data-lang="zh" class="lang-content hide">比较两种设计</span>
+                    <span data-lang="es" class="lang-content hide">Comparar Ambos Diseños</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center hidden">
+        <div class="text-center">
+            <div class="loading text-4xl font-thin mb-4">
+                <span data-lang="ko" class="lang-content">로딩 중...</span>
+                <span data-lang="en" class="lang-content hide">Loading...</span>
+                <span data-lang="ja" class="lang-content hide">読み込み中...</span>
+                <span data-lang="zh" class="lang-content hide">加载中...</span>
+                <span data-lang="es" class="lang-content hide">Cargando...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('hide');
+            });
+            
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('hide');
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        function selectDesign(design) {
+            // Show loading screen
+            document.getElementById('loadingScreen').classList.remove('hidden');
+            
+            // Save design preference
+            localStorage.setItem('preferredDesign', design);
+            
+            // Redirect to selected design
+            setTimeout(() => {
+                if (design === 'minimal') {
+                    window.location.href = 'index-minimal.html';
+                } else {
+                    window.location.href = 'index-swiss.html';
+                }
+            }, 500);
+        }
+        
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
+            document.getElementById('langSelector').value = savedLang;
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
