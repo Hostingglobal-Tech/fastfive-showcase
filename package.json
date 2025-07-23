@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "remix build",
+    "build:static": "node build-static.js",
     "dev": "remix dev",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
@@ -16,10 +17,11 @@
     "isbot": "^3.7.1",
     "mongoose": "^8.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-flat-routes": "^0.8.5"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.4.0",
+    "@remix-run/dev": "^2.16.8",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.16",
