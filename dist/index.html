@@ -3,24 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastFive 남부터미널 - 프리미엄 공유오피스</title>
-    <meta name="description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스 FastFive">
-    <meta property="og:title" content="FastFive 남부터미널 - 프리미엄 공유오피스">
+    <title>패스트파이브 서초3호점 - 프리미엄 공유오피스 | FastFive Seocho 3</title>
+    <meta name="description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스 패스트파이브 서초3호점">
+    <meta property="og:title" content="패스트파이브 서초3호점 - 프리미엄 공유오피스">
     <meta property="og:description" content="남부터미널역 도보 10분, 최신 시설과 쾌적한 환경의 프리미엄 공유오피스">
     <meta property="og:type" content="website">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hide { display: none; }
+    </style>
 </head>
 <body>
     <div id="root">
         <div class="min-h-screen bg-gray-50">
+            <!-- Language Selector -->
+            <div class="bg-gray-900 text-white py-2">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
+                    <select id="langSelector" class="bg-gray-800 text-white px-3 py-1 rounded" onchange="changeLanguage(this.value)">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Header -->
             <header class="bg-white shadow-sm sticky top-0 z-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-center h-16">
-                        <h1 class="text-2xl font-bold text-gray-900">FastFive 남부터미널</h1>
+                        <h1 class="text-2xl font-bold text-gray-900">
+                            <span data-lang="ko" class="lang-content">패스트파이브 서초3호점</span>
+                            <span data-lang="en" class="lang-content hide">FastFive Seocho 3</span>
+                            <span data-lang="ja" class="lang-content hide">ファストファイブ 瑞草3号店</span>
+                            <span data-lang="zh" class="lang-content hide">FastFive 瑞草3号店</span>
+                            <span data-lang="es" class="lang-content hide">FastFive Seocho 3</span>
+                        </h1>
                         <nav class="flex space-x-8">
-                            <a href="#gallery" class="text-gray-700 hover:text-gray-900">시설 갤러리</a>
-                            <a href="#location" class="text-gray-700 hover:text-gray-900">위치 안내</a>
+                            <a href="#gallery" class="text-gray-700 hover:text-gray-900">
+                                <span data-lang="ko" class="lang-content">시설 갤러리</span>
+                                <span data-lang="en" class="lang-content hide">Facility Gallery</span>
+                                <span data-lang="ja" class="lang-content hide">施設ギャラリー</span>
+                                <span data-lang="zh" class="lang-content hide">设施图库</span>
+                                <span data-lang="es" class="lang-content hide">Galería de Instalaciones</span>
+                            </a>
+                            <a href="#location" class="text-gray-700 hover:text-gray-900">
+                                <span data-lang="ko" class="lang-content">위치 안내</span>
+                                <span data-lang="en" class="lang-content hide">Location</span>
+                                <span data-lang="ja" class="lang-content hide">アクセス</span>
+                                <span data-lang="zh" class="lang-content hide">位置信息</span>
+                                <span data-lang="es" class="lang-content hide">Ubicación</span>
+                            </a>
                         </nav>
                     </div>
                 </div>
@@ -30,8 +64,20 @@
             <section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
-                        <h2 class="text-4xl font-bold mb-4">프리미엄 공유오피스의 새로운 기준</h2>
-                        <p class="text-xl mb-8">남부터미널역에서 도보 10분, 최고의 업무 환경을 경험하세요</p>
+                        <h2 class="text-4xl font-bold mb-4">
+                            <span data-lang="ko" class="lang-content">프리미엄 공유오피스의 새로운 기준</span>
+                            <span data-lang="en" class="lang-content hide">A New Standard for Premium Coworking Spaces</span>
+                            <span data-lang="ja" class="lang-content hide">プレミアム共有オフィスの新基準</span>
+                            <span data-lang="zh" class="lang-content hide">高端共享办公空间的新标准</span>
+                            <span data-lang="es" class="lang-content hide">Un Nuevo Estándar para Espacios de Coworking Premium</span>
+                        </h2>
+                        <p class="text-xl mb-8">
+                            <span data-lang="ko" class="lang-content">남부터미널역에서 도보 10분, 최고의 업무 환경을 경험하세요</span>
+                            <span data-lang="en" class="lang-content hide">10-minute walk from Nambu Terminal Station, Experience the best working environment</span>
+                            <span data-lang="ja" class="lang-content hide">南部ターミナル駅から徒歩10分、最高の業務環境を体験してください</span>
+                            <span data-lang="zh" class="lang-content hide">距南部客运站地铁站步行10分钟，体验最佳办公环境</span>
+                            <span data-lang="es" class="lang-content hide">A 10 minutos a pie de la estación Nambu Terminal, Experimente el mejor ambiente de trabajo</span>
+                        </p>
                     </div>
                 </div>
             </section>
@@ -39,48 +85,137 @@
             <!-- Gallery Section -->
             <section id="gallery" class="py-16">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-12">시설 갤러리</h2>
+                    <h2 class="text-3xl font-bold text-center mb-12">
+                        <span data-lang="ko" class="lang-content">시설 갤러리</span>
+                        <span data-lang="en" class="lang-content hide">Facility Gallery</span>
+                        <span data-lang="ja" class="lang-content hide">施設ギャラリー</span>
+                        <span data-lang="zh" class="lang-content hide">设施图库</span>
+                        <span data-lang="es" class="lang-content hide">Galería de Instalaciones</span>
+                    </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- 11층 라운지 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
                             <img src="images/11층라운지_신축이라_깨끗하고_인테리어가_깔끔하다.jpg" alt="11층 라운지" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">11층 라운지</h3>
-                                <p class="text-gray-600">신축 건물의 깔끔한 인테리어</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">11층 프리미엄 라운지</span>
+                                    <span data-lang="en" class="lang-content hide">11F Premium Lounge</span>
+                                    <span data-lang="ja" class="lang-content hide">11階プレミアムラウンジ</span>
+                                    <span data-lang="zh" class="lang-content hide">11楼高级休息室</span>
+                                    <span data-lang="es" class="lang-content hide">Salón Premium del Piso 11</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">2023년 완공된 신축 건물의 최상층에 위치한 프리미엄 라운지. 파노라마 뷰와 함께 여유로운 네트워킹과 휴식이 가능한 공간입니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Premium lounge on the top floor of a newly built building completed in 2023. A space for relaxed networking and rest with panoramic views.</span>
+                                    <span data-lang="ja" class="lang-content hide">2023年竣工の新築ビル最上階に位置するプレミアムラウンジ。パノラマビューと共にゆったりとしたネットワーキングと休憩が可能な空間です。</span>
+                                    <span data-lang="zh" class="lang-content hide">位于2023年竣工的新建筑顶层的高级休息室。可以在全景视野中享受轻松的社交和休息空间。</span>
+                                    <span data-lang="es" class="lang-content hide">Salón premium en el último piso de un edificio nuevo completado en 2023. Un espacio para networking relajado y descanso con vistas panorámicas.</span>
+                                </p>
                             </div>
                         </div>
+
+                        <!-- 개인 업무공간 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="/images/배정받은자리_넓고_쾌적하였다.jpg" alt="개인 업무공간" class="w-full h-64 object-cover">
+                            <img src="images/배정받은자리_넓고_쾌적하였다.jpg" alt="개인 업무공간" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">개인 업무공간</h3>
-                                <p class="text-gray-600">넓고 쾌적한 개인 공간</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">전용 데스크 공간</span>
+                                    <span data-lang="en" class="lang-content hide">Dedicated Desk Space</span>
+                                    <span data-lang="ja" class="lang-content hide">専用デスクスペース</span>
+                                    <span data-lang="zh" class="lang-content hide">专用办公桌空间</span>
+                                    <span data-lang="es" class="lang-content hide">Espacio de Escritorio Dedicado</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">인체공학적 의자와 높이 조절 가능한 데스크로 구성된 개인 전용 업무 공간. 충분한 수납공간과 전용 전원 콘센트를 제공합니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Private workspace with ergonomic chair and height-adjustable desk. Ample storage space and dedicated power outlets provided.</span>
+                                    <span data-lang="ja" class="lang-content hide">人間工学に基づいた椅子と高さ調節可能なデスクで構成された個人専用ワークスペース。十分な収納スペースと専用電源コンセントを提供します。</span>
+                                    <span data-lang="zh" class="lang-content hide">配备人体工学椅和可调节高度办公桌的私人工作空间。提供充足的储物空间和专用电源插座。</span>
+                                    <span data-lang="es" class="lang-content hide">Espacio de trabajo privado con silla ergonómica y escritorio ajustable en altura. Amplio espacio de almacenamiento y tomas de corriente dedicadas.</span>
+                                </p>
                             </div>
                         </div>
+
+                        <!-- 층별 편의시설 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="/images/각층마다_이러한_집기류가_구비되어_있었다.jpg" alt="층별 편의시설" class="w-full h-64 object-cover">
+                            <img src="images/각층마다_이러한_집기류가_구비되어_있었다.jpg" alt="층별 편의시설" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">층별 편의시설</h3>
-                                <p class="text-gray-600">완벽한 사무 집기 구비</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">층별 사무 집기</span>
+                                    <span data-lang="en" class="lang-content hide">Office Equipment per Floor</span>
+                                    <span data-lang="ja" class="lang-content hide">各階のオフィス備品</span>
+                                    <span data-lang="zh" class="lang-content hide">各楼层办公设备</span>
+                                    <span data-lang="es" class="lang-content hide">Equipamiento de Oficina por Piso</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">각 층마다 프린터, 스캐너, 파쇄기 등 최신 사무 기기를 완비. 24시간 이용 가능하며 정기적인 유지보수로 항상 최상의 상태를 유지합니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Latest office equipment including printers, scanners, and shredders on each floor. Available 24/7 with regular maintenance for optimal condition.</span>
+                                    <span data-lang="ja" class="lang-content hide">各階にプリンター、スキャナー、シュレッダーなど最新のオフィス機器を完備。24時間利用可能で、定期的なメンテナンスで常に最良の状態を維持します。</span>
+                                    <span data-lang="zh" class="lang-content hide">每层配备打印机、扫描仪、碎纸机等最新办公设备。24小时可用，定期维护确保始终保持最佳状态。</span>
+                                    <span data-lang="es" class="lang-content hide">Equipos de oficina de última generación incluyendo impresoras, escáneres y trituradoras en cada piso. Disponible 24/7 con mantenimiento regular.</span>
+                                </p>
                             </div>
                         </div>
+
+                        <!-- 주방 시설 1 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
                             <img src="images/냉장고_얼음정수기_커피머신이_구비되어_있었다.jpg" alt="주방 시설" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">주방 시설</h3>
-                                <p class="text-gray-600">냉장고, 얼음정수기, 커피머신 완비</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">프리미엄 주방 시설</span>
+                                    <span data-lang="en" class="lang-content hide">Premium Kitchen Facilities</span>
+                                    <span data-lang="ja" class="lang-content hide">プレミアムキッチン設備</span>
+                                    <span data-lang="zh" class="lang-content hide">高级厨房设施</span>
+                                    <span data-lang="es" class="lang-content hide">Instalaciones de Cocina Premium</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">대용량 냉장고와 정수기, 프리미엄 커피머신 구비. 바리스타급 에스프레소 머신으로 언제든지 고품질 커피를 즐길 수 있습니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Large refrigerator, water purifier, and premium coffee machine. Enjoy high-quality coffee anytime with our barista-grade espresso machine.</span>
+                                    <span data-lang="ja" class="lang-content hide">大容量冷蔵庫と浄水器、プレミアムコーヒーマシンを装備。バリスタ級エスプレッソマシンでいつでも高品質のコーヒーを楽しめます。</span>
+                                    <span data-lang="zh" class="lang-content hide">配备大容量冰箱、净水器和高级咖啡机。使用咖啡师级别的浓缩咖啡机，随时享用高品质咖啡。</span>
+                                    <span data-lang="es" class="lang-content hide">Refrigerador de gran capacidad, purificador de agua y máquina de café premium. Disfrute de café de alta calidad con nuestra máquina de espresso profesional.</span>
+                                </p>
                             </div>
                         </div>
+
+                        <!-- 주방 시설 2 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
                             <img src="images/싱크대와_제빙기_전자렌지도_있었다.jpg" alt="주방 편의시설" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">주방 편의시설</h3>
-                                <p class="text-gray-600">싱크대와 전자렌지 구비</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">편의 조리시설</span>
+                                    <span data-lang="en" class="lang-content hide">Convenient Cooking Facilities</span>
+                                    <span data-lang="ja" class="lang-content hide">便利な調理設備</span>
+                                    <span data-lang="zh" class="lang-content hide">便利的烹饪设施</span>
+                                    <span data-lang="es" class="lang-content hide">Instalaciones de Cocina Convenientes</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">넓은 싱크대와 제빙기, 전자렌지 등 완벽한 조리 환경. 간단한 식사 준비부터 팀 회식까지 다양한 용도로 활용 가능합니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Spacious sink, ice maker, and microwave for a complete cooking environment. Suitable for everything from simple meal prep to team gatherings.</span>
+                                    <span data-lang="ja" class="lang-content hide">広いシンクと製氷機、電子レンジなど完璧な調理環境。簡単な食事の準備からチーム会食まで様々な用途で活用できます。</span>
+                                    <span data-lang="zh" class="lang-content hide">宽敞的水槽、制冰机和微波炉等完善的烹饪环境。从简单的餐食准备到团队聚餐都可以使用。</span>
+                                    <span data-lang="es" class="lang-content hide">Amplio fregadero, máquina de hielo y microondas para un ambiente de cocina completo. Ideal para desde preparación de comidas simples hasta reuniones de equipo.</span>
+                                </p>
                             </div>
                         </div>
+
+                        <!-- 주차 시설 -->
                         <div class="bg-white rounded-lg shadow-md overflow-hidden">
                             <img src="images/장애인_주차공간이_있었다.jpg" alt="장애인 주차공간" class="w-full h-64 object-cover">
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg">장애인 주차공간</h3>
-                                <p class="text-gray-600">배리어프리 주차 시설</p>
+                                <h3 class="font-semibold text-lg">
+                                    <span data-lang="ko" class="lang-content">배리어프리 주차시설</span>
+                                    <span data-lang="en" class="lang-content hide">Barrier-Free Parking</span>
+                                    <span data-lang="ja" class="lang-content hide">バリアフリー駐車施設</span>
+                                    <span data-lang="zh" class="lang-content hide">无障碍停车设施</span>
+                                    <span data-lang="es" class="lang-content hide">Estacionamiento Sin Barreras</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span data-lang="ko" class="lang-content">장애인 전용 주차공간과 엘리베이터 직결 통로 완비. 모든 고객이 편안하게 이용할 수 있는 접근성을 최우선으로 설계되었습니다.</span>
+                                    <span data-lang="en" class="lang-content hide">Dedicated disabled parking spaces with direct elevator access. Designed with accessibility as a top priority for all customers' comfort.</span>
+                                    <span data-lang="ja" class="lang-content hide">障害者専用駐車スペースとエレベーター直結通路完備。すべてのお客様が快適に利用できるアクセシビリティを最優先に設計されています。</span>
+                                    <span data-lang="zh" class="lang-content hide">配备残疾人专用停车位和直通电梯通道。以所有客户都能舒适使用的无障碍性为最优先设计。</span>
+                                    <span data-lang="es" class="lang-content hide">Espacios de estacionamiento dedicados para discapacitados con acceso directo al ascensor. Diseñado priorizando la accesibilidad para todos.</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -90,24 +225,79 @@
             <!-- Location Section -->
             <section id="location" class="py-16 bg-gray-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center mb-12">위치 안내</h2>
+                    <h2 class="text-3xl font-bold text-center mb-12">
+                        <span data-lang="ko" class="lang-content">위치 안내</span>
+                        <span data-lang="en" class="lang-content hide">Location</span>
+                        <span data-lang="ja" class="lang-content hide">アクセス</span>
+                        <span data-lang="zh" class="lang-content hide">位置信息</span>
+                        <span data-lang="es" class="lang-content hide">Ubicación</span>
+                    </h2>
                     <div class="bg-white rounded-lg shadow-md p-8">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <h3 class="text-xl font-semibold mb-4">찾아오시는 길</h3>
+                                <h3 class="text-xl font-semibold mb-4">
+                                    <span data-lang="ko" class="lang-content">찾아오시는 길</span>
+                                    <span data-lang="en" class="lang-content hide">Directions</span>
+                                    <span data-lang="ja" class="lang-content hide">アクセス方法</span>
+                                    <span data-lang="zh" class="lang-content hide">交通指南</span>
+                                    <span data-lang="es" class="lang-content hide">Cómo Llegar</span>
+                                </h3>
+                                <ul class="space-y-2 text-gray-600 mb-6">
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 주소: 서울특별시 서초구 효령로 335</span>
+                                        <span data-lang="en" class="lang-content hide">• Address: 335 Hyoryeong-ro, Seocho-gu, Seoul</span>
+                                        <span data-lang="ja" class="lang-content hide">• 住所: ソウル特別市瑞草区孝令路335</span>
+                                        <span data-lang="zh" class="lang-content hide">• 地址: 首尔特别市瑞草区孝令路335</span>
+                                        <span data-lang="es" class="lang-content hide">• Dirección: 335 Hyoryeong-ro, Seocho-gu, Seúl</span>
+                                    </li>
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 지하철 3호선 남부터미널역 6번 출구 도보 10분</span>
+                                        <span data-lang="en" class="lang-content hide">• 10-min walk from Exit 6, Nambu Terminal Station (Line 3)</span>
+                                        <span data-lang="ja" class="lang-content hide">• 地下鉄3号線南部ターミナル駅6番出口から徒歩10分</span>
+                                        <span data-lang="zh" class="lang-content hide">• 地铁3号线南部客运站6号出口步行10分钟</span>
+                                        <span data-lang="es" class="lang-content hide">• 10 min a pie desde la Salida 6, Estación Nambu Terminal (Línea 3)</span>
+                                    </li>
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 주차 공간 완비 (사전 등록 필요)</span>
+                                        <span data-lang="en" class="lang-content hide">• Parking available (pre-registration required)</span>
+                                        <span data-lang="ja" class="lang-content hide">• 駐車場完備（事前登録必要）</span>
+                                        <span data-lang="zh" class="lang-content hide">• 配备停车场（需要提前注册）</span>
+                                        <span data-lang="es" class="lang-content hide">• Estacionamiento disponible (registro previo requerido)</span>
+                                    </li>
+                                </ul>
+                                <h3 class="text-xl font-semibold mb-4">
+                                    <span data-lang="ko" class="lang-content">운영 시간</span>
+                                    <span data-lang="en" class="lang-content hide">Operating Hours</span>
+                                    <span data-lang="ja" class="lang-content hide">営業時間</span>
+                                    <span data-lang="zh" class="lang-content hide">营业时间</span>
+                                    <span data-lang="es" class="lang-content hide">Horario de Operación</span>
+                                </h3>
                                 <ul class="space-y-2 text-gray-600">
-                                    <li>• 지하철 남부터미널역에서 도보 10분</li>
-                                    <li>• 주차 공간 완비 (승인된 차량만 이용 가능)</li>
-                                    <li>• 장애인 주차 공간 구비</li>
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 평일: 08:00 - 22:00</span>
+                                        <span data-lang="en" class="lang-content hide">• Weekdays: 08:00 - 22:00</span>
+                                        <span data-lang="ja" class="lang-content hide">• 平日: 08:00 - 22:00</span>
+                                        <span data-lang="zh" class="lang-content hide">• 工作日: 08:00 - 22:00</span>
+                                        <span data-lang="es" class="lang-content hide">• Días laborables: 08:00 - 22:00</span>
+                                    </li>
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 주말: 09:00 - 18:00</span>
+                                        <span data-lang="en" class="lang-content hide">• Weekends: 09:00 - 18:00</span>
+                                        <span data-lang="ja" class="lang-content hide">• 週末: 09:00 - 18:00</span>
+                                        <span data-lang="zh" class="lang-content hide">• 周末: 09:00 - 18:00</span>
+                                        <span data-lang="es" class="lang-content hide">• Fines de semana: 09:00 - 18:00</span>
+                                    </li>
+                                    <li>
+                                        <span data-lang="ko" class="lang-content">• 공휴일: 휴무</span>
+                                        <span data-lang="en" class="lang-content hide">• Public Holidays: Closed</span>
+                                        <span data-lang="ja" class="lang-content hide">• 祝日: 休業</span>
+                                        <span data-lang="zh" class="lang-content hide">• 公共假期: 休息</span>
+                                        <span data-lang="es" class="lang-content hide">• Días festivos: Cerrado</span>
+                                    </li>
                                 </ul>
                             </div>
-                            <div>
-                                <h3 class="text-xl font-semibold mb-4">운영 시간</h3>
-                                <ul class="space-y-2 text-gray-600">
-                                    <li>• 평일: 08:00 - 22:00</li>
-                                    <li>• 주말: 09:00 - 18:00</li>
-                                    <li>• 공휴일: 휴무</li>
-                                </ul>
+                            <div class="flex items-center justify-center">
+                                <img src="images/map-placeholder.svg" alt="패스트파이브 서초3호점 지도" class="w-full max-w-md rounded-lg shadow-md bg-white p-4">
                             </div>
                         </div>
                     </div>
@@ -117,10 +307,27 @@
             <!-- Footer -->
             <footer class="bg-gray-800 text-white py-8">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p>&copy; 2024 FastFive 남부터미널. All rights reserved.</p>
+                    <p>&copy; 2024 FastFive Seocho 3. All rights reserved.</p>
                 </div>
             </footer>
         </div>
     </div>
+
+    <script>
+        function changeLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('hide');
+            });
+            
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('hide');
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+    </script>
 </body>
 </html>
