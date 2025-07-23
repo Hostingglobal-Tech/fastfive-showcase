@@ -1,31 +1,56 @@
-import { prisma } from '~/utils/db.server';
-import type { Review } from '@prisma/client';
+import mongoose, { Schema, Document } from 'mongoose';
+import dbConnect from '~/utils/db.server';
 
-export async function getApprovedReviews() {
-  const reviews = await prisma.review.findMany({
-    where: {
-      approved: true,
-      featured: false,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    take: 9, // Show latest 9 regular reviews
-  });
-
-  const featuredReviews = await prisma.review.findMany({
-    where: {
-      approved: true,
-      featured: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    take: 2, // Show 2 featured reviews
-  });
-
-  return { reviews, featuredReviews };
+export interface Review extends Document {
+  _id: string;
+  id: string;
+  name: string;
+  email?: string | null;
+  rating: number;
+  title?: string | null;
+  comment: string;
+  ipHash: string;
+  userAgent: string;
+  status: 'pending' | 'approved' | 'rejected';
+  featured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
+
+const reviewSchema = new Schema<Review>(
+  {
+    name: { type: String, required: true, trim: true },
+    email: { type: String, default: null, trim: true },
+    rating: { type: Number, required: true, min: 1, max: 5 },
+    title: { type: String, default: null, trim: true },
+    comment: { type: String, required: true, trim: true },
+    ipHash: { type: String, required: true },
+    userAgent: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ['pending', 'approved', 'rejected'], 
+      default: 'pending' 
+    },
+    featured: { type: Boolean, default: false },
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function(doc, ret) {
+        ret.id = ret._id.toString();
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      }
+    }
+  }
+);
+
+// Create indexes for performance
+reviewSchema.index({ status: 1, createdAt: -1 });
+reviewSchema.index({ featured: 1, status: 1 });
+
+const ReviewModel = mongoose.models.Review || mongoose.model<Review>('Review', reviewSchema);
 
 export async function createReview(data: {
   name: string;
@@ -33,47 +58,96 @@ export async function createReview(data: {
   rating: number;
   title?: string | null;
   comment: string;
-  ipHash?: string;
-  userAgent?: string;
-}): Promise<Review> {
-  return await prisma.review.create({
-    data: {
-      name: data.name,
-      email: data.email,
-      rating: data.rating,
-      title: data.title,
-      comment: data.comment,
-      ipHash: data.ipHash,
-      userAgent: data.userAgent,
-      approved: false, // Requires admin approval
-      featured: false,
-    },
-  });
+  ipHash: string;
+  userAgent: string;
+}) {
+  await dbConnect();
+  
+  const review = new ReviewModel(data);
+  await review.save();
+  
+  return review.toJSON();
+}
+
+export async function getApprovedReviews() {
+  await dbConnect();
+  
+  const reviews = await ReviewModel
+    .find({ status: 'approved' })
+    .sort({ createdAt: -1 })
+    .lean();
+  
+  const featuredReviews = await ReviewModel
+    .find({ status: 'approved', featured: true })
+    .sort({ createdAt: -1 })
+    .limit(6)
+    .lean();
+  
+  return {
+    reviews: reviews.map(review => ({
+      ...review,
+      id: review._id.toString(),
+      _id: undefined
+    })),
+    featuredReviews: featuredReviews.map(review => ({
+      ...review,
+      id: review._id.toString(),
+      _id: undefined
+    }))
+  };
 }
 
 export async function getPendingReviews() {
-  return await prisma.review.findMany({
-    where: {
-      approved: false,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
+  await dbConnect();
+  
+  const reviews = await ReviewModel
+    .find({ status: 'pending' })
+    .sort({ createdAt: -1 })
+    .lean();
+  
+  return reviews.map(review => ({
+    ...review,
+    id: review._id.toString(),
+    _id: undefined
+  }));
 }
 
-export async function approveReview(reviewId: string, featured = false) {
-  return await prisma.review.update({
-    where: { id: reviewId },
-    data: {
-      approved: true,
-      featured,
-    },
-  });
+export async function updateReviewStatus(
+  id: string, 
+  status: 'approved' | 'rejected', 
+  featured: boolean = false
+) {
+  await dbConnect();
+  
+  const review = await ReviewModel.findByIdAndUpdate(
+    id,
+    { status, featured },
+    { new: true }
+  ).lean();
+  
+  if (!review) {
+    throw new Error('Review not found');
+  }
+  
+  return {
+    ...review,
+    id: review._id.toString(),
+    _id: undefined
+  };
 }
 
-export async function deleteReview(reviewId: string) {
-  return await prisma.review.delete({
-    where: { id: reviewId },
-  });
+export async function deleteReview(id: string) {
+  await dbConnect();
+  
+  const review = await ReviewModel.findByIdAndDelete(id).lean();
+  
+  if (!review) {
+    throw new Error('Review not found');
+  }
+  
+  return {
+    ...review,
+    id: review._id.toString(),
+    _id: undefined
+  };
 }

@@ -14,7 +14,7 @@ export interface Review {
   rating: number;
   title?: string | null;
   comment: string;
-  approved: boolean;
+  status: 'pending' | 'approved' | 'rejected';
   featured: boolean;
   createdAt: Date;
   updatedAt: Date;

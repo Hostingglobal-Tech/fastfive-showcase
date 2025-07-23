@@ -1,22 +1,43 @@
-import { PrismaClient } from '@prisma/client';
+import mongoose from 'mongoose';
 
-let prisma: PrismaClient;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fastfive';
 
-declare global {
-  var __db__: PrismaClient;
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-// This is needed because in development we don't want to restart
-// the server with every change, but we want to make sure we don't
-// create a new connection to the DB with every change either.
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient();
-} else {
-  if (!global.__db__) {
-    global.__db__ = new PrismaClient();
+// Global is used here to maintain a cached connection across hot reloads
+// in development. This prevents connections growing exponentially
+// during API Route usage.
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
+}
+
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn;
   }
-  prisma = global.__db__;
-  prisma.$connect();
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose;
+    });
+  }
+
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
+  return cached.conn;
 }
 
-export { prisma };
+export default dbConnect;
